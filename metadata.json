@@ -1,0 +1,8 @@
+{
+  "name": "LabShare - Academic Resource Management & Booking Platform",
+  "description": "Secure, enterprise-grade laboratory resource sharing, verified equipment scheduling, OTP check-in, condition tracking, and role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

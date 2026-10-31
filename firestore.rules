@@ -1,0 +1,108 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default-deny all unmapped operations
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'himanshubhopal641@gmail.com' || request.auth.token.email == 'admin@labshare.edu') &&
+        request.auth.token.email_verified == true
+      );
+    }
+
+    function isManager() {
+      return isSignedIn() && (
+        isAdmin() ||
+        (request.auth.token.email == 'manager@labshare.edu' && request.auth.token.email_verified == true)
+      );
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // User collection: PII isolation & identity protection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (isOwner(userId) || isManager());
+      allow list: if isAdmin();
+      allow create: if isSignedIn() && isOwner(userId) &&
+        isValidId(userId) &&
+        incoming().id == request.auth.uid &&
+        incoming().role == 'researcher'; // Forbid self-assigning manager or admin
+      allow update: if isSignedIn() && (
+        isAdmin() ||
+        (isOwner(userId) && incoming().diff(existing()).affectedKeys().hasOnly(['phone', 'department']))
+      );
+      allow delete: if isAdmin();
+    }
+
+    // Resources: Public catalog for users, manager/admin authoring
+    match /resources/{resourceId} {
+      allow get, list: if isSignedIn();
+      allow create: if isManager() &&
+        isValidId(resourceId) &&
+        incoming().keys().hasAll(['id', 'name', 'category', 'status']) &&
+        incoming().name is string && incoming().name.size() <= 150;
+      allow update: if isManager();
+      allow delete: if isAdmin();
+    }
+
+    // Bookings: Strict tenant isolation and action-based transitions
+    match /bookings/{bookingId} {
+      allow get: if isSignedIn() && (
+        existing().userId == request.auth.uid || isManager()
+      );
+      allow list: if isSignedIn() && (
+        resource.data.userId == request.auth.uid || isManager()
+      );
+      allow create: if isSignedIn() &&
+        isValidId(bookingId) &&
+        incoming().userId == request.auth.uid &&
+        incoming().keys().hasAll(['id', 'resourceId', 'userId', 'startTime', 'endTime', 'status']) &&
+        (incoming().status == 'pending_approval' || incoming().status == 'approved');
+      allow update: if isSignedIn() && (
+        isAdmin() ||
+        isManager() ||
+        (existing().userId == request.auth.uid && incoming().diff(existing()).affectedKeys().hasOnly(['status']) && incoming().status == 'cancelled')
+      );
+      allow delete: if isAdmin();
+    }
+
+    // Incidents: Open to researchers, managed by manager/admin
+    match /incidents/{incidentId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn() &&
+        isValidId(incidentId) &&
+        incoming().reportedBy == request.auth.uid;
+      allow update: if isManager();
+      allow delete: if isAdmin();
+    }
+
+    // Immutable Audit Logs: Read-only for Administrator, WRITES FORBIDDEN from client
+    match /auditLogs/{logId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if false; // System generated only via server
+    }
+  }
+}

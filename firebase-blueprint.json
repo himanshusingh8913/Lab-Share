@@ -1,0 +1,349 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with role-based access control and certified laboratory training.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user identifier matching request.auth.uid"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Full legal name of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Institutional email address"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["researcher", "manager", "admin"],
+          "description": "Authorization level within the platform"
+        },
+        "department": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Academic department or research core facility"
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Emergency contact number"
+        },
+        "certifications": {
+          "type": "array",
+          "description": "List of active lab certifications"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account registration timestamp"
+        }
+      },
+      "required": ["id", "name", "email", "role", "department", "createdAt"]
+    },
+    "Resource": {
+      "title": "Laboratory Resource",
+      "description": "Shared laboratory instrument, equipment bay, or specialized scientific facility.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique resource identifier"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Equipment display name"
+        },
+        "model": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Manufacturer model and identifier"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Microscopy",
+            "Spectrometry",
+            "Chromatography",
+            "Centrifugation",
+            "Cleanroom",
+            "Thermal & Incubation",
+            "General Equipment"
+          ],
+          "description": "Scientific equipment classification"
+        },
+        "building": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Campus building location"
+        },
+        "room": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Specific laboratory room number"
+        },
+        "department": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Hosting department or core facility"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["available", "maintenance", "in-use", "decommissioned"],
+          "description": "Current operational state"
+        },
+        "requiresApproval": {
+          "type": "boolean",
+          "description": "Whether reservations require manager authorization"
+        },
+        "requiredCertifications": {
+          "type": "array",
+          "description": "Prerequisite certifications required to operate"
+        },
+        "hourlyRate": {
+          "type": "number",
+          "description": "Cost recovery hourly billing rate"
+        },
+        "maxConsecutiveHours": {
+          "type": "number",
+          "description": "Maximum allowed reservation time in hours"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "UID of manager/admin who cataloged the resource"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["id", "name", "category", "building", "room", "department", "status", "requiresApproval"]
+    },
+    "Booking": {
+      "title": "Equipment Booking",
+      "description": "Scheduled reservation record for laboratory equipment.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique booking identifier"
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "Identifier of the reserved resource"
+        },
+        "resourceName": {
+          "type": "string",
+          "description": "Human readable resource name"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Researcher UID holding the reservation"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Researcher display name"
+        },
+        "userEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Researcher email address"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Scheduled reservation start ISO timestamp"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Scheduled reservation end ISO timestamp"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending_approval",
+            "approved",
+            "rejected",
+            "waitlisted",
+            "checked_out",
+            "returned",
+            "cancelled"
+          ],
+          "description": "Lifecycle state of the booking"
+        },
+        "otpCode": {
+          "type": "string",
+          "description": "Secure one-time pickup verification code"
+        },
+        "otpExpiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Expiration timestamp for pickup OTP"
+        },
+        "otpUsed": {
+          "type": "boolean",
+          "description": "Single-use flag to prevent OTP replay"
+        },
+        "otpUsedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when OTP was verified and equipment released"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Booking submission timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Booking last modified timestamp"
+        }
+      },
+      "required": ["id", "resourceId", "userId", "startTime", "endTime", "status", "otpUsed"]
+    },
+    "Incident": {
+      "title": "Laboratory Incident Report",
+      "description": "Safety issue, malfunction, or damage incident filed for a resource.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique incident identifier"
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "Identifier of the affected resource"
+        },
+        "resourceName": {
+          "type": "string",
+          "description": "Name of the affected resource"
+        },
+        "reportedBy": {
+          "type": "string",
+          "description": "UID of the reporting researcher or manager"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Incident summary title"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Detailed description of the incident"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Severity assessment"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "under_investigation", "resolved"],
+          "description": "Investigation status"
+        },
+        "resolutionNotes": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Corrective action taken"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time filed"
+        }
+      },
+      "required": ["id", "resourceId", "reportedBy", "title", "description", "severity", "status", "createdAt"]
+    },
+    "AuditLog": {
+      "title": "Immutable Audit Log",
+      "description": "Tamper-proof system activity log for compliance and security auditing.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique log record identifier"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Exact immutable server timestamp"
+        },
+        "actorId": {
+          "type": "string",
+          "description": "User UID who performed the action"
+        },
+        "actorEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "User email who performed the action"
+        },
+        "actorRole": {
+          "type": "string",
+          "enum": ["researcher", "manager", "admin"],
+          "description": "Role of the actor"
+        },
+        "action": {
+          "type": "string",
+          "description": "Categorized system action"
+        },
+        "targetId": {
+          "type": "string",
+          "description": "ID of affected resource, booking, or user"
+        },
+        "targetType": {
+          "type": "string",
+          "enum": ["resource", "booking", "user", "incident", "system"],
+          "description": "Category of target entity"
+        }
+      },
+      "required": ["id", "timestamp", "actorId", "actorEmail", "actorRole", "action", "targetId", "targetType"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Stores user profiles with role attributes and qualifications."
+    },
+    "/resources/{resourceId}": {
+      "schema": {
+        "$ref": "#/entities/Resource"
+      },
+      "description": "Stores cataloged research instruments and facilities."
+    },
+    "/bookings/{bookingId}": {
+      "schema": {
+        "$ref": "#/entities/Booking"
+      },
+      "description": "Stores reservation intervals, approval states, and pickup OTPs."
+    },
+    "/incidents/{incidentId}": {
+      "schema": {
+        "$ref": "#/entities/Incident"
+      },
+      "description": "Stores safety and equipment malfunction incidents."
+    },
+    "/auditLogs/{logId}": {
+      "schema": {
+        "$ref": "#/entities/AuditLog"
+      },
+      "description": "Stores immutable platform audit trails, read-only to administrators."
+    }
+  }
+}

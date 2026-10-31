@@ -1,0 +1,731 @@
+{
+  "users": [
+    {
+      "id": "user-admin",
+      "name": "Dr. Evelyn Vance",
+      "email": "admin@labshare.edu",
+      "role": "admin",
+      "department": "Central Research Facilities Administration",
+      "phone": "+1 (555) 234-5670",
+      "certifications": [
+        "Biosafety Level 2",
+        "Laser Safety Level 3",
+        "Cleanroom Class 1000 Protocol",
+        "Mass Spectrometry Operator Level 2",
+        "Chemical Safety Standard",
+        "Centrifuge Rotor Safety",
+        "Hazardous Chemical Handling"
+      ],
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "salt": "cbdc296dc497300296d550ae55dda505",
+      "passwordHash": "f496727a5bb6e6cb842f22cc9e1eb3e4bd9509e1f07102347910ec4978ca98f6aa867e2c0f49449b33634ff66c5bcb81af8a8113133c2d8f92f92968101d1b5e",
+      "sessionToken": "tok_admin_1793384196881",
+      "tokenExpiresAt": "2026-11-06T18:16:36.881Z"
+    },
+    {
+      "id": "user-manager",
+      "name": "Marcus Chen",
+      "email": "manager@labshare.edu",
+      "role": "manager",
+      "department": "Cellular Imaging & Biocore Management",
+      "phone": "+1 (555) 345-6781",
+      "certifications": [
+        "Biosafety Level 2",
+        "Laser Safety Level 3",
+        "Confocal Microscopy Specialist",
+        "Centrifuge Rotor Safety",
+        "Chemical Safety Standard"
+      ],
+      "createdAt": "2026-01-05T00:00:00.000Z",
+      "salt": "3d22f24fc650af470d0236fdf8611310",
+      "passwordHash": "6f6fe829f05713e2af7eb870e70503083d9884020ca145890703af11413a8578c11eeb7dde8edee0f448f3cb02f75210fbb7223e76680eae92107478fd97d0c6",
+      "sessionToken": "tok_manager_1793384035332",
+      "tokenExpiresAt": "2026-11-06T18:13:55.332Z"
+    },
+    {
+      "id": "user-researcher",
+      "name": "Sarah Jenkins",
+      "email": "researcher@labshare.edu",
+      "role": "researcher",
+      "department": "Molecular Biology & Genetics Graduate Fellow",
+      "phone": "+1 (555) 456-7892",
+      "certifications": [
+        "Biosafety Level 2",
+        "Laser Safety Level 3",
+        "Confocal Microscopy Specialist",
+        "Chemical Safety Standard",
+        "Centrifuge Rotor Safety"
+      ],
+      "createdAt": "2026-02-10T00:00:00.000Z",
+      "salt": "ddb64d9d319b8ba1212fbae4fa4e7399",
+      "passwordHash": "f6ee914fefbf40f24ee964f35d0cb16d55e3e0a397c5601ae8713f9b48540b9a2a8ede379b9514cfd603320d0ec40c9162d21ede140b4b9b3c72a88e4b5600c9",
+      "sessionToken": "tok_c9b632b09912931ed102344042e85f3cc77e64ef0d74d8e2",
+      "tokenExpiresAt": "2026-11-07T03:10:36.311Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "res-orbitrap-1",
+      "name": "Thermo Scientific Orbitrap Exploris 480",
+      "model": "Orbitrap Exploris 480 Mass Spectrometer",
+      "category": "Spectrometry",
+      "building": "Biochemistry Research Hall",
+      "room": "Room B-204",
+      "department": "Proteomics & Metabolomics Core",
+      "status": "available",
+      "requiresApproval": true,
+      "requiredCertifications": [
+        "Mass Spectrometry Operator Level 2",
+        "Chemical Safety Standard"
+      ],
+      "hourlyRate": 75,
+      "maxConsecutiveHours": 8,
+      "specifications": {
+        "Resolution": "Up to 480,000 at m/z 200",
+        "Mass Range": "m/z 40 to 6,000",
+        "Ionization": "OptaMax NG Heated ESI / APCI",
+        "Accuracy": "< 1 ppm RMS"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1579165466791-78822231cb67?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-admin",
+      "createdAt": "2026-09-01T08:00:00.000Z",
+      "updatedAt": "2026-09-01T08:00:00.000Z",
+      "nextCalibrationDate": "2026-11-01T09:00:00Z",
+      "nextMaintenanceDate": "2026-11-25T09:00:00Z",
+      "lastCalibrationDate": "2026-08-01T09:00:00Z"
+    },
+    {
+      "id": "res-confocal-2",
+      "name": "Leica TCS SP8 Laser Scanning Confocal",
+      "model": "TCS SP8 Confocal Microscope with HyD Detectors",
+      "category": "Microscopy",
+      "building": "Bioengineering Institute",
+      "room": "Imaging Suite 102",
+      "department": "Advanced Cellular Imaging",
+      "status": "in-use",
+      "requiresApproval": true,
+      "requiredCertifications": [
+        "Laser Safety Level 3",
+        "Confocal Microscopy Specialist"
+      ],
+      "hourlyRate": 60,
+      "maxConsecutiveHours": 6,
+      "specifications": {
+        "Lasers": "405nm, 488nm, 552nm, 638nm solid state",
+        "Detectors": "2x HyD hybrid detectors, 2x standard PMT",
+        "Objectives": "10x, 20x multi-imm, 40x oil, 63x oil NA 1.4",
+        "LiveCell": "Heated stage, 5% CO2 incubation chamber"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-admin",
+      "createdAt": "2026-09-05T09:00:00.000Z",
+      "updatedAt": "2026-09-05T09:00:00.000Z",
+      "nextCalibrationDate": "2026-11-04T09:00:00Z",
+      "nextMaintenanceDate": "2026-11-06T09:00:00Z",
+      "lastCalibrationDate": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "res-ultracentrifuge-3",
+      "name": "Beckman Coulter Optima XPN-100",
+      "model": "Optima XPN-100 Ultracentrifuge 100k RPM",
+      "category": "Centrifugation",
+      "building": "Molecular Biology Labs",
+      "room": "Core Prep Room 310",
+      "department": "Structural Biology",
+      "status": "available",
+      "requiresApproval": false,
+      "requiredCertifications": [
+        "Biosafety Level 2",
+        "Centrifuge Rotor Safety"
+      ],
+      "hourlyRate": 35,
+      "maxConsecutiveHours": 12,
+      "specifications": {
+        "MaxSpeed": "100,000 RPM (802,400 x g)",
+        "Refrigeration": "0 to +40 C in 1 C increments",
+        "Rotors": "Ti-70 fixed angle, SW-41 Ti swinging bucket",
+        "Vacuum": "Solid-state diffusion pump < 10 microns"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-manager",
+      "createdAt": "2026-09-10T10:00:00.000Z",
+      "updatedAt": "2026-09-10T10:00:00.000Z",
+      "nextCalibrationDate": "2026-12-15T09:00:00Z",
+      "nextMaintenanceDate": "2026-12-20T09:00:00Z",
+      "lastCalibrationDate": "2026-06-20T09:00:00Z"
+    },
+    {
+      "id": "res-hplc-4",
+      "name": "Agilent 1290 Infinity II UHPLC",
+      "model": "1290 Infinity II Binary Pump with DAD FS",
+      "category": "Chromatography",
+      "building": "Chemical Sciences Center",
+      "room": "Analytical Wing 405",
+      "department": "Pharmaceutical & Organic Chemistry",
+      "status": "maintenance",
+      "maintenanceNotes": "Scheduled quaternary seal replacement and pressure transducer recalibration.",
+      "requiresApproval": true,
+      "requiredCertifications": [
+        "Chemical Safety Standard",
+        "Chromatography Specialist"
+      ],
+      "hourlyRate": 50,
+      "maxConsecutiveHours": 10,
+      "specifications": {
+        "Pressure": "Up to 1300 bar (18,850 psi)",
+        "FlowRange": "0.05 to 5.0 mL/min",
+        "Detector": "Diode Array Detector (190-640 nm)",
+        "Autosampler": "Capacity 432 vials (2 mL)"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-admin",
+      "createdAt": "2026-09-12T11:00:00.000Z",
+      "updatedAt": "2026-09-12T11:00:00.000Z",
+      "nextCalibrationDate": "2026-10-28T09:00:00Z",
+      "nextMaintenanceDate": "2026-10-31T09:00:00Z",
+      "lastCalibrationDate": "2026-07-15T09:00:00Z"
+    },
+    {
+      "id": "res-cleanroom-5",
+      "name": "Cleanroom Photolithography Bay (Class 1000)",
+      "model": "Karl Suss MJB4 Mask Aligner & Spin Coater",
+      "category": "Cleanroom",
+      "building": "Nanotechnology Complex",
+      "room": "Cleanroom Bay 4",
+      "department": "Micro & Nano Systems",
+      "status": "available",
+      "requiresApproval": true,
+      "requiredCertifications": [
+        "Cleanroom Class 1000 Protocol",
+        "Hazardous Chemical Handling"
+      ],
+      "hourlyRate": 90,
+      "maxConsecutiveHours": 5,
+      "specifications": {
+        "Cleanliness": "ISO Class 6 (Class 1000)",
+        "Alignment": "Sub-micron resolution (0.8 um)",
+        "Substrate": "Pieces up to 100 mm wafers",
+        "UVSource": "350W High Pressure Hg lamp"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-manager",
+      "createdAt": "2026-09-15T12:00:00.000Z",
+      "updatedAt": "2026-09-15T12:00:00.000Z",
+      "nextCalibrationDate": "2026-11-09T09:00:00Z",
+      "nextMaintenanceDate": "2026-11-15T09:00:00Z",
+      "lastCalibrationDate": "2026-08-01T09:00:00Z"
+    },
+    {
+      "id": "res-incubator-6",
+      "name": "Thermo Forma Steri-Cycle CO2 Incubator Suite",
+      "model": "Steri-Cycle 184L HEPA Filtered Dual Chamber",
+      "category": "Thermal & Incubation",
+      "building": "Biochemistry Research Hall",
+      "room": "Room B-112",
+      "department": "Stem Cell Biology",
+      "status": "available",
+      "requiresApproval": false,
+      "requiredCertifications": [
+        "Biosafety Level 2"
+      ],
+      "hourlyRate": 20,
+      "maxConsecutiveHours": 72,
+      "specifications": {
+        "Capacity": "184 L interior volume",
+        "CO2Control": "IR Sensor 0-20%",
+        "TempRange": "+5 C above ambient to 50 C",
+        "Sterilization": "140 C high temp decontamination cycle"
+      },
+      "imageUrl": "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80",
+      "createdBy": "user-admin",
+      "createdAt": "2026-09-18T13:00:00.000Z",
+      "updatedAt": "2026-09-18T13:00:00.000Z",
+      "nextCalibrationDate": "2026-11-20T09:00:00Z",
+      "nextMaintenanceDate": "2026-12-05T09:00:00Z",
+      "lastCalibrationDate": "2026-08-15T09:00:00Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "book-sample-active",
+      "resourceId": "res-confocal-2",
+      "resourceName": "Leica TCS SP8 Laser Scanning Confocal",
+      "userId": "user-researcher",
+      "userName": "Sarah Jenkins",
+      "userEmail": "researcher@labshare.edu",
+      "userDepartment": "Molecular Biology & Genetics",
+      "projectTitle": "Neuronal Synaptic Vesicle Dynamics in Primary Culture",
+      "purpose": "Live cell z-stack time lapse imaging with 488nm laser line excitation.",
+      "startTime": "2026-10-30T15:52:49.300Z",
+      "endTime": "2026-10-30T19:52:49.300Z",
+      "status": "checked_out",
+      "approvedBy": "user-manager",
+      "approvedAt": "2026-10-30T14:52:49.300Z",
+      "otpCode": "482910",
+      "otpExpiresAt": "2026-10-31T02:52:49.300Z",
+      "otpUsed": true,
+      "otpUsedAt": "2026-10-30T15:52:49.300Z",
+      "checkInCondition": {
+        "reportedBy": "user-manager",
+        "reportedByName": "Marcus Chen",
+        "timestamp": "2026-10-30T15:52:49.300Z",
+        "physicalCondition": "excellent",
+        "cleanliness": "clean",
+        "calibrationVerified": true,
+        "notes": "Laser output normalized, 63x objective lens pristine."
+      },
+      "createdAt": "2026-10-29T16:52:49.300Z",
+      "updatedAt": "2026-10-30T15:52:49.300Z"
+    },
+    {
+      "id": "book-sample-ready",
+      "resourceId": "res-orbitrap-1",
+      "resourceName": "Thermo Scientific Orbitrap Exploris 480",
+      "userId": "user-researcher",
+      "userName": "Sarah Jenkins",
+      "userEmail": "researcher@labshare.edu",
+      "userDepartment": "Molecular Biology & Genetics",
+      "projectTitle": "Phosphoproteome Profiling of Kinase Knockouts",
+      "purpose": "High resolution peptide identification via nano-LC/MS/MS.",
+      "startTime": "2026-10-30T20:52:49.300Z",
+      "endTime": "2026-10-30T23:52:49.300Z",
+      "status": "approved",
+      "approvedBy": "user-manager",
+      "approvedAt": "2026-10-30T16:22:49.300Z",
+      "otpCode": "672885",
+      "otpExpiresAt": "2026-10-30T17:52:49.300Z",
+      "otpUsed": false,
+      "createdAt": "2026-10-30T13:52:49.300Z",
+      "updatedAt": "2026-10-30T16:22:49.300Z"
+    },
+    {
+      "id": "book-sample-pending",
+      "resourceId": "res-cleanroom-5",
+      "resourceName": "Cleanroom Photolithography Bay (Class 1000)",
+      "userId": "user-researcher",
+      "userName": "Sarah Jenkins",
+      "userEmail": "researcher@labshare.edu",
+      "userDepartment": "Molecular Biology & Genetics",
+      "projectTitle": "Microfluidic Cell Sorter Channel Fabrication",
+      "purpose": "SU-8 negative photoresist spin-coating and mask aligner UV crosslinking.",
+      "startTime": "2026-10-31T16:52:49.300Z",
+      "endTime": "2026-10-31T20:52:49.300Z",
+      "status": "approved",
+      "otpUsed": false,
+      "createdAt": "2026-10-30T15:52:49.300Z",
+      "updatedAt": "2026-10-30T18:14:51.235Z",
+      "approvedBy": "user-manager",
+      "approvedAt": "2026-10-30T18:14:51.235Z",
+      "otpCode": "238562",
+      "otpExpiresAt": "2026-10-30T18:44:51.235Z"
+    },
+    {
+      "id": "book-sample-returned",
+      "resourceId": "res-ultracentrifuge-3",
+      "resourceName": "Beckman Coulter Optima XPN-100",
+      "userId": "user-researcher",
+      "userName": "Sarah Jenkins",
+      "userEmail": "researcher@labshare.edu",
+      "userDepartment": "Molecular Biology & Genetics",
+      "projectTitle": "Exosome Density Gradient Separation",
+      "purpose": "Sucrose cushion ultracentrifugation with SW-41 Ti rotor.",
+      "startTime": "2026-10-28T16:52:49.300Z",
+      "endTime": "2026-10-28T20:52:49.300Z",
+      "status": "returned",
+      "approvedBy": "user-manager",
+      "approvedAt": "2026-10-28T14:52:49.300Z",
+      "otpCode": "729184",
+      "otpExpiresAt": "2026-10-28T17:52:49.300Z",
+      "otpUsed": true,
+      "otpUsedAt": "2026-10-28T16:52:49.300Z",
+      "checkInCondition": {
+        "reportedBy": "user-manager",
+        "reportedByName": "Marcus Chen",
+        "timestamp": "2026-10-28T16:52:49.300Z",
+        "physicalCondition": "good",
+        "cleanliness": "clean",
+        "calibrationVerified": true,
+        "notes": "Chamber vacuum sealed normally."
+      },
+      "returnCondition": {
+        "reportedBy": "user-researcher",
+        "reportedByName": "Sarah Jenkins",
+        "timestamp": "2026-10-28T20:52:49.300Z",
+        "physicalCondition": "excellent",
+        "cleanliness": "clean",
+        "calibrationVerified": true,
+        "notes": "Spindle wiped down, rotor dry and stored in desiccation rack."
+      },
+      "createdAt": "2026-10-27T16:52:49.300Z",
+      "updatedAt": "2026-10-28T20:52:49.300Z"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "inc-sample-1",
+      "bookingId": "book-sample-prev",
+      "resourceId": "res-hplc-4",
+      "resourceName": "Agilent 1290 Infinity II UHPLC",
+      "reportedBy": "user-researcher",
+      "reportedByName": "Sarah Jenkins",
+      "title": "Backpressure fluctuation and baseline drift in channel B",
+      "description": "System pressure spiked to 1100 bar with 50% methanol rinse; possible inline filter clogging.",
+      "severity": "medium",
+      "status": "under_investigation",
+      "resolutionNotes": "Technician notified. Replacement frit scheduled.",
+      "resolvedBy": "user-manager",
+      "createdAt": "2026-10-29T20:52:49.300Z",
+      "updatedAt": "2026-10-30T06:52:49.300Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793416236311-5d1acb78",
+      "timestamp": "2026-10-31T03:10:36.311Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793415850304-f60dcef4",
+      "timestamp": "2026-10-31T03:04:10.304Z"
+    },
+    {
+      "actorId": "user-admin",
+      "actorEmail": "admin@labshare.edu",
+      "actorRole": "admin",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-admin",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "admin"
+      },
+      "id": "audit-1793384196881-e1059b05",
+      "timestamp": "2026-10-30T18:16:36.881Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "researcher"
+      },
+      "id": "audit-1793384100151-669c5dd2",
+      "timestamp": "2026-10-30T18:15:00.151Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "BOOKING_APPROVED",
+      "targetId": "book-sample-pending",
+      "targetType": "booking",
+      "details": {
+        "approvedFor": "researcher@labshare.edu",
+        "otpIssued": true,
+        "otpExpiresAt": "2026-10-30T18:44:51.235Z"
+      },
+      "id": "audit-1793384091235-b36cc40e",
+      "timestamp": "2026-10-30T18:14:51.235Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-manager",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "manager"
+      },
+      "id": "audit-1793384035333-f0060c15",
+      "timestamp": "2026-10-30T18:13:55.333Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793383675388-a9aa11f7",
+      "timestamp": "2026-10-30T18:07:55.388Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-manager",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "manager"
+      },
+      "id": "audit-1793383238371-3f80f5a6",
+      "timestamp": "2026-10-30T18:00:38.371Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793383113567-3c893c26",
+      "timestamp": "2026-10-30T17:58:33.567Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793382710545-c3c8a55c",
+      "timestamp": "2026-10-30T17:51:50.545Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "researcher"
+      },
+      "id": "audit-1793381647550-d5712294",
+      "timestamp": "2026-10-30T17:34:07.550Z"
+    },
+    {
+      "actorId": "user-admin",
+      "actorEmail": "admin@labshare.edu",
+      "actorRole": "admin",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-admin",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "admin"
+      },
+      "id": "audit-1793381605703-35d52486",
+      "timestamp": "2026-10-30T17:33:25.703Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "REPORT_EXPORTED",
+      "targetId": "rep-1793381592138",
+      "targetType": "system",
+      "details": {
+        "reportType": "incidents",
+        "format": "csv",
+        "recordCount": 1,
+        "filterSummary": "Severity: ALL, Status: ALL"
+      },
+      "id": "audit-1793381592138-102d6a15",
+      "timestamp": "2026-10-30T17:33:12.138Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "REPORT_EXPORTED",
+      "targetId": "rep-1793381536270",
+      "targetType": "system",
+      "details": {
+        "reportType": "equipment_usage",
+        "format": "csv",
+        "recordCount": 4,
+        "filterSummary": "Range: all, Resource: ALL, Status: ALL"
+      },
+      "id": "audit-1793381536270-ab9540ac",
+      "timestamp": "2026-10-30T17:32:16.270Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-manager",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "manager"
+      },
+      "id": "audit-1793381412647-697243fb",
+      "timestamp": "2026-10-30T17:30:12.647Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793381402269-30500069",
+      "timestamp": "2026-10-30T17:30:02.269Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-manager",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "manager"
+      },
+      "id": "audit-1793380720522-ffc37a8c",
+      "timestamp": "2026-10-30T17:18:40.522Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793380563749-18868fe5",
+      "timestamp": "2026-10-30T17:16:03.749Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793379768704-78515b99",
+      "timestamp": "2026-10-30T17:02:48.704Z"
+    },
+    {
+      "actorId": "user-admin",
+      "actorEmail": "admin@labshare.edu",
+      "actorRole": "admin",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-admin",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "admin"
+      },
+      "id": "audit-1793379299180-0b77b7ad",
+      "timestamp": "2026-10-30T16:54:59.180Z"
+    },
+    {
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "ROLE_EVALUATION_SWITCH",
+      "targetId": "user-manager",
+      "targetType": "user",
+      "details": {
+        "switchedTo": "manager"
+      },
+      "id": "audit-1793379270662-670805e0",
+      "timestamp": "2026-10-30T16:54:30.662Z"
+    },
+    {
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "USER_LOGIN",
+      "targetId": "user-researcher",
+      "targetType": "user",
+      "details": {
+        "department": "Molecular Biology & Genetics Graduate Fellow"
+      },
+      "id": "audit-1793379198078-9d40b713",
+      "timestamp": "2026-10-30T16:53:18.078Z"
+    },
+    {
+      "id": "audit-sys-init",
+      "timestamp": "2026-10-27T16:52:49.300Z",
+      "actorId": "user-admin",
+      "actorEmail": "admin@labshare.edu",
+      "actorRole": "admin",
+      "action": "SYSTEM_INITIALIZED",
+      "targetId": "system",
+      "targetType": "system",
+      "details": {
+        "environment": "production",
+        "secureMode": true
+      }
+    },
+    {
+      "id": "audit-book-1",
+      "timestamp": "2026-10-29T16:52:49.300Z",
+      "actorId": "user-researcher",
+      "actorEmail": "researcher@labshare.edu",
+      "actorRole": "researcher",
+      "action": "BOOKING_REQUESTED",
+      "targetId": "book-sample-active",
+      "targetType": "booking",
+      "details": {
+        "resourceId": "res-confocal-2",
+        "hours": 4
+      }
+    },
+    {
+      "id": "audit-book-1-appr",
+      "timestamp": "2026-10-30T14:52:49.300Z",
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "BOOKING_APPROVED",
+      "targetId": "book-sample-active",
+      "targetType": "booking",
+      "details": {
+        "otpGenerated": true
+      }
+    },
+    {
+      "id": "audit-otp-verify",
+      "timestamp": "2026-10-30T15:52:49.300Z",
+      "actorId": "user-manager",
+      "actorEmail": "manager@labshare.edu",
+      "actorRole": "manager",
+      "action": "OTP_VERIFIED_CHECK_IN",
+      "targetId": "book-sample-active",
+      "targetType": "booking",
+      "details": {
+        "initialCondition": "excellent"
+      }
+    }
+  ]
+}
